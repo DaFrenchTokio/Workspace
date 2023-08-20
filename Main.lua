@@ -136,6 +136,9 @@ function Azu:Notification(str) print(str) end
 function Azu:ExploitIncompatibility(err) error("Your exploit doesn't have the ability to use the " .. err) end
 function Azu:IsNumber(str) if tonumber(str) ~= nil or str == 'inf' then return true end end
 function Azu:ToClipboard(str) local base = setclipboard or toclipboard or set_clipboard or (Clipboard and Clipboard.set) if base then base(str) if Azu.notifications then Azu:Notification('Copied to clipboard') end else Azu:ExploitIncompatibility('clipboard') end end
+
 function Azu:GetCharacter(Player) if Player.Character ~= nil then return Player.Character end end
+function Azu:GetHumanoid(Player) Char = Azu:GetCharacter(Player) if Char then Humanoid = Char:FindFirstChild('Humanoid') if Humanoid then return Humanoid else return false end else return false end end
+function Azu:GetHumanoidRootPart(Player) Char = Azu:GetCharacter(Player) if Char then HumanoidRootPart = Char:FindFirstChild('HumanoidRootPart') if HumanoidRootPart then return HumanoidRootPart else return false end else return false end end
 
 
